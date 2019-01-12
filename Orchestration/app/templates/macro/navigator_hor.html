@@ -2,11 +2,32 @@
 
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
   <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Company name</a>
-  <ul class="navbar-nav px-3">
-    <li class="nav-item text-nowrap">
-      <a class="nav-link" href="#">Sign out</a>
-    </li>
-  </ul>
+
+    {% if  session['is_authenticated'] %}
+
+    <div class="btn-group justify-content-between mr-md-3">
+      <button type="button" class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{session.username}}</button>
+      <div class="dropdown-menu dropdown-menu-right">
+         <a class="dropdown-item" href="#">Action 1</a>
+         <a class="dropdown-item" href="#">Action 2</a>
+         <a class="dropdown-item" href="#">Action 3</a>
+       <div class="dropdown-divider"></div>
+         <a class="dropdown-item" href="signOut">Sign Out</a>
+      </div>
+    </div>
+
+{% else %}
+
+
+        <a class="btn btn-secondary btn-sm mr-md-3" href="signIn">Sign In</a>
+
+
+{% endif %}
+
+
+
+
+
 </nav>
 
 {% endmacro %}

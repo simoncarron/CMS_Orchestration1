@@ -23,10 +23,13 @@ def validateLogin():
     _password = request.form['inputPassword']
 
     session['pkID'] = "0000001"
-    session['user'] = "Admin"
+    session['username'] = "Admin"
     session['email'] = "admin@admin.com"
+    session['is_authenticated'] = "False"
 
     if _username == "admin" and _password == "admin":
+        session['is_authenticated'] = "True"
         return redirect('/')
     else:
+        session.pop('is_authenticated', False)
         return render_template('/auth/index.html', title="Sign In", authentication="False")
