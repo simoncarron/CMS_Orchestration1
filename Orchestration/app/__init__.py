@@ -1,6 +1,6 @@
 from flask import render_template, Flask, session
 
-from module.auth import auth_blueprint
+from .module.auth import auth_blueprint
 
 app = Flask(__name__)
 
