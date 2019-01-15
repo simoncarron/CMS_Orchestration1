@@ -1,0 +1,45 @@
+{% macro navigator(menu) %}
+
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#">Fixed navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="settings">Settings</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">Disabled</a>
+        </li>
+      </ul>
+
+{% if  session['is_authenticated'] %}
+
+      <div class="btn-group justify-content-between mr-md-3">
+        <button type="button" class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{session.username}}</button>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a class="dropdown-item" href="#">Action 1</a>
+          <a class="dropdown-item" href="#">Action 2</a>
+          <a class="dropdown-item" href="#">Action 3</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="signOut">Sign Out</a>
+      </div>
+
+{% else %}
+
+        <a class="btn btn-secondary btn-sm mr-md-3" href="signIn">Sign In</a>
+
+{% endif %}
+
+    </div>
+  </nav>
+</header>
+
+{% endmacro %}
+

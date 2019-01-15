@@ -1,28 +1,30 @@
 {% from "macro/header.html" import head with context %}
-{% from "macro/navigator_hor.html" import navigator_hor with context %}
+{% from "macro/navigator.html" import navigator with context %}
 {% from "macro/footer.html" import footer with context %}
 
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html lang="en" class="h-100">
+<head>
 
-        {{ head(location) }}
+    {{ head(location) }}
 
-  </head>
-  <body>
+</head>
+<body class="d-flex flex-column h-100">
 
-        {% block navigator_hor %}
-        {{ navigator_hor() }}
-        {% endblock %}
+{% block navigator %}
+{{ navigator() }}
+{% endblock %}
 
+<main role="main" class="flex-shrink-0">
     <div class="container">
 
-        {% block container %}{% endblock %}
+        {% block container %}
+        {% endblock %}
 
     </div>
+</main>
 
-  </body>
+{{ footer() }}
 
-        {{ footer() }}
-
+</body>
 </html>
