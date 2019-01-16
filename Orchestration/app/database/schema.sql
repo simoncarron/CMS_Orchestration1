@@ -1,4 +1,5 @@
 drop table if exists cms;
+
 create table cms (
   pkID integer primary key autoincrement
   ,name text
@@ -6,7 +7,7 @@ create table cms (
   ,username text
   ,password text
 );
-INSERT INTO cms (text,management_ip_address,username,password)VALUES ('cms 01', '192.168.1.1', 'admin', 'admin' );
-INSERT INTO cms (text,management_ip_address,username,password)VALUES ('cms 02', '192.168.1.2', 'admin', 'admin' );
-INSERT INTO cms (text,management_ip_address,username,password)VALUES ('cms 03', '192.168.1.3', 'admin', 'admin' );
 
+INSERT INTO cms (name,management_ip_address,username,password)VALUES ('cms 01', '198.18.134.175', 'admin', 'dCloud123' );
+INSERT INTO cms (name,management_ip_address,username,password)VALUES ('cms 02', '198.18.134.185', 'admin', 'dCloud123' );
+INSERT INTO cms (name,management_ip_address,username,password)VALUES ('cms 03', '198.18.134.147', 'admin', 'dCloud123' );

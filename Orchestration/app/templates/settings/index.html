@@ -3,23 +3,67 @@
 {% block container %}
 
 <h1 class="mt-5">Settings</h1>
-<p class="lead">CMS</p>
-<form>
-   <fieldset enable>
-      <div class="form-group">
-         <label for="disabledTextInput">CMS 1</label>
-         <input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input">
+
+
+<div class="accordion" id="accordionExample">
+
+
+    {% for cms in entries %}
+
+  <div class="card">
+    <div class="card-header" id="heading{{cms.pkID}}">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed"  type="button" data-toggle="collapse" data-target="#collapse{{cms.pkID}}" aria-expanded="fasle" aria-controls="collapse{{cms.pkID}}">
+          {{cms.name}}
+        </button>
+      </h5>
+    </div>
+
+
+    <div id="collapse{{cms.pkID}}" class="collapse" aria-labelledby="heading{{cms.pkID}}" data-parent="#accordionExample">
+      <div class="card-body">
+
+
+<div class="input-group input-group-sm mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-sm">Small</span>
+  </div>
+  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+</div>
+
+
+
+
       </div>
-      <div class="form-group">
-         <label for="disabledTextInput">CMS 2</label>
-         <input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input">
-      </div>
-      <div class="form-group">
-         <label for="disabledTextInput">CMS 3</label>
-         <input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input">
-      </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-   </fieldset>
-</form>
+    </div>
+  </div>
+
+    {% endfor %}
+
+</div>
+
+
+{% endblock %}
+
+{% block alert %}
+{% if not reach_min_entries %}
+<div class="alert alert-danger" role="alert">At least {{min_entries}} cms(s) has to be configured!</div>
+{% endif %}
+{% endblock %}
+
+{% block action %}
+
+    <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Actions
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            {% if reach_max_entries %}
+            <li class="disabled"><a>Add POD</a></li>
+            {% else %}
+            <li><a href="/addPodForm">Add POD</a></li>
+            {% endif %}
+        </ul>
+    </div>
 
 {% endblock %}
